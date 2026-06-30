@@ -1,0 +1,98 @@
+nb :
+
+- solution en sandbox
+- option masquer wpm ranked
+- Pop up informatif
+
+
+
+
+- Oreille absolue
+- Jeux solitaire
+- Jeux d'échec : coordonnées, ...?
+- Stroop test 
+- Sudoku / killer sudoku /... variantes
+- Scrabble ???
+- Mémory auditif 
+- Estimation rapide 
+- Suite logique 
+- 2048
+- Démineur 
+- Sokoban ??
+- Tetris ??
+- Jeu de chiffres dans des chiffres et des lettres 
+- Geo quizz
+
+
+
+--------------------------  COMMENTAIRES  --------------------------
+
+
+nateo : J'ai essayé de faire un retour le lus complet possible sur point sur lequel je me
+suis fait une remarque, tout n'est pas forcément objectif,
+Il y a moins de positif que le reste mais j'ai juste pas tout noté globalement comme 
+je l'ai déjà je trouve le site vraiment cool j'ai essayé de mettre le doigt sur les points
+à améliorer.
+
+_______ Point améliorable selon moi : 
+
+
+AU GLOBALE :
+
+-les texte d'arrivé sur les mini jeux ne sont pas totalement hramonisé,
+les espaces sont souvents pas les même d'un jeu à l'autre entre les lignes et 
+ça peut perturber. (Après coup je crois que uniquement Temps de réaction est pas uniforme)
+
+-Est ce que il serait pas plus intéressant d'un point de vue utilisateur d'avoir accès
+aux paramètres du mini-jeu avant de l'avoir lancé et d'être pressé par le chrono ?
+
+-Créer un etat de settings "par défaut" si c'est pas déjà le cas qui parlerais au plus
+grand nombred de gens (par exemple dactylographie quand on lance le jeux par défaut on serait
+en mot aléatoir sans ponctuation ni majuscule ni symbole...)
+
+- Le F pour plein ecran ne marche pas dans dactylographie, mémoir visuelle, intervalles musicaux.
+
+DACTYLOGRAPHIE :
+
+-Je pense que il faut revoir le système de validation des mots et de la supression, 
+il faudrait pouvoir appuyer sur supprimer une lettre que lorsque l'on est dans un mots et 
+pas entre les mots et pour la bar espace elle servirait de validation de mots mais ne devrais
+pas sauter un mots comme c'est le cas actuelement si on rappuie dessus
+
+-Ajouter un paramètre pour bannir les caractère compliqué tel que à majuscule etc
+
+MÉMOIRE VISUELLE :
+
+- (subjectif) je trouve que c'est pas assez punitif 3 essais avant de perdre une vie 
+en plus du fait que devoir perdre 3 vie pour mourrir ça fait quand meme 9 erreur avant 
+l'echec. (peut être ajouter dans le menue tentative avant de perdre une vie)
+
+INTERVALLES MUSICAUX :
+
+-Le menu ne menne a rien. 
+
+
+_______ Les + à garder :
+
+
+AU GLOBALE :
+
+-Menu ultra clean et facile à utiliser, le paramètre global comme les menu de chaque mini-jeu
+
+-J'aime beaucoup le bandeau en bas du sites qui menne au cookies et mention légale ( Pour 
+plus tard sous contact on pourra creer ub onglet de suggestion communautaire mais on y est 
+pas encore XD )
+
+-La barre de recherche est bien faite et utile. 
+
+CALCUL MENTALE :
+
+- Le flou quand on met pause est très bien et devrait être étendu à tout les mini-jeu
+de temps (genre dactylographie)
+
+DACTYLOGRAPHIE :
+
+-Le WPM en direct c'est trop bien
+
+-Le fait de pouvoir choisir des modes comme littératures etc c'est pas mal aussi surtout 
+que on pourrait l'élargir

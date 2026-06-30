@@ -1,0 +1,82 @@
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .reset-wrapper {
+            width: 100%;
+            max-width: 450px;
+            padding: 2.5rem;
+            background: var(--card-bg, #1e1e1e);
+            border-radius: 12px;
+            border: 1px solid var(--border-color, #333);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+        .reset-title {
+            font-family: var(--font-heading, 'Rubik', sans-serif);
+            font-size: 1.5rem;
+            color: var(--text-primary, #fff);
+            margin-bottom: 0.5rem;
+        }
+        .reset-subtitle {
+            color: var(--text-secondary, #aaa);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            line-height: 1.5;
+        }
+        .reset-input {
+            width: 100%;
+            padding: 14px 16px;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color, #333);
+            background: var(--bg-main, #000);
+            color: var(--text-primary, #fff);
+            font-family: inherit;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.2s;
+            box-sizing: border-box;
+        }
+        .reset-input:focus {
+            border-color: var(--accent-color, #4CAF50);
+        }
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            background: var(--accent-color, #4CAF50);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-family: var(--font-heading, 'Rubik', sans-serif);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: opacity 0.2s;
+            margin-top: 1rem;
+        }
+        .btn-submit:hover { opacity: 0.9; }
+        .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+        
+        .alert-box {
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            display: none;
+            font-size: 0.9rem;
+        }
+        .alert-error {
+            background: rgba(255, 77, 77, 0.1);
+            color: #ff4d4d;
+            border: 1px solid rgba(255, 77, 77, 0.3);
+        }
+        .alert-success {
+            background: rgba(76, 175, 80, 0.1);
+            color: #4CAF50;
+            border: 1px solid rgba(76, 175, 80, 0.3);
+        }

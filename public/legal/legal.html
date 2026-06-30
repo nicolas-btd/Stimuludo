@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="fr" class="theme-lvl-4 dark-dominant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Stimuludo | Legal Information</title>
+
+    <link rel="preconnect" href="https://api-gateway.umami.dev" crossorigin>
+    <link rel="preload" href="/fonts/rubik-v31-latin-500.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/rubik-v31-latin-700.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/rubik-v31-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="legal.css">
+
+    <script>
+        (function() {
+            const applySettings = () => {
+                try {
+                    const savedStep = localStorage.getItem('themeStep');
+                    const savedColor = localStorage.getItem('accentColor');
+                    const savedColorSecondary = localStorage.getItem('accentColorSecondary');
+                    const savedColor3 = localStorage.getItem('customBgColor');
+                    const savedColor4 = localStorage.getItem('customCardBgColor');
+                    if (savedColor4) document.documentElement.style.setProperty('--card-bg', savedColor4);
+
+                    const savedOpaque = localStorage.getItem('globalOpaque') === 'true';
+
+
+                                                            const savedLang = localStorage.getItem('siteLanguage') || 'en';
+
+
+                                        const savedPatternMode = localStorage.getItem('patternMode');
+                    const oldHidePattern = localStorage.getItem('hideDotPattern');
+                    let modeToApply = 'dots'; 
+
+                    if (savedPatternMode) {
+                        modeToApply = savedPatternMode;
+                    } else if (oldHidePattern === 'true') {
+                        modeToApply = 'none';
+                    }
+
+                    const savedOpacity = localStorage.getItem('patternOpacity') || '50'; 
+                    document.documentElement.style.setProperty('--pattern-opacity', savedOpacity / 100);
+
+                                        document.documentElement.setAttribute('data-pattern', modeToApply);
+                    document.documentElement.setAttribute('lang', savedLang);
+
+
+                                        if (savedColor) document.documentElement.style.setProperty('--accent-color', savedColor);
+                    if (savedColorSecondary) document.documentElement.style.setProperty('--accent-color-secondary', savedColorSecondary);
+                    if (savedColor3) document.documentElement.style.setProperty('--bg-main', savedColor3);
+
+
+                                        if (savedStep) {
+                        document.documentElement.classList.remove('theme-lvl-1', 'theme-lvl-2', 'theme-lvl-3', 'theme-lvl-4', 'theme-lvl-5', 'dark-dominant');
+                        document.documentElement.classList.add('theme-lvl-' + savedStep);
+                        if (parseInt(savedStep) >= 3) {
+                            document.documentElement.classList.add('dark-dominant');
+                        }
+                    }
+
+
+                                        if (savedOpaque) {
+                        document.documentElement.classList.add('global-opaque');
+                    } else {
+                        document.documentElement.classList.remove('global-opaque');
+                    }
+
+                } catch (e) { console.error(e); }
+            };
+
+            applySettings();
+
+            window.addEventListener('pageshow', (event) => {
+                setTimeout(applySettings, 10);
+            });
+
+            window.addEventListener('visibilitychange', () => {
+                if (document.visibilityState === 'visible') {
+                    applySettings();
+                }
+            });
+        })();
+</script>
+
+    <meta name="stimuludo-seo-anchor" content="start">
+    
+    <meta name="description" content="View the legal notice and terms of use for Stimuludo, a platform dedicated to cognitive testing and training.">
+    
+    <link rel="canonical" href="https://stimuludo.com/legal/legal.html" />
+
+    <link rel="alternate" hreflang="en" href="https://stimuludo.com/legal/legal.html" />
+    <link rel="alternate" hreflang="fr" href="https://stimuludo.com/legal/legal.html" />
+    <link rel="alternate" hreflang="x-default" href="https://stimuludo.com/legal/legal.html" />
+    
+    <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png?v=2" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg?v=2" />
+    <link rel="shortcut icon" href="/favicon/favicon.ico?v=2" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png?v=2" />
+    <meta name="apple-mobile-web-app-title" content="Stimuludo" />
+    <link rel="manifest" href="/favicon/site.webmanifest?v=2" crossorigin="use-credentials" />
+    
+    <meta name="theme-color" content="#4CAF50">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://stimuludo.com/legal/legal.html">
+    
+    <meta property="og:title" content="Stimuludo | Legal Notice">
+    <meta property="og:description" content="Consult the legal notice and terms of use of the Stimuludo cognitive training platform.">
+    <meta property="og:image" content="https://stimuludo.com/banniere-reseaux.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://stimuludo.com/legal/legal.html">
+    <meta name="twitter:title" content="Stimuludo | Legal Notice">
+    <meta name="twitter:description" content="Consult the legal notice and terms of use of the Stimuludo cognitive training platform.">
+    <meta name="twitter:image" content="https://stimuludo.com/banniere-reseaux.jpg">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Legal Information - Stimuludo",
+      "url": "https://stimuludo.com/legal/legal.html",
+      "description": "Legal terms, privacy policy, and cookie management for the Stimuludo platform."
+    }
+</script>
+
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="cfe1784e-702b-4eba-9df5-2b043792e437"></script>
+    <meta name="stimuludo-seo-anchor" content="end">
+</head>
+<body>
+
+    <div id="bg-pattern" aria-hidden="true"></div>
+
+    <header>
+        <div class="layout-wrapper header-inner">
+            <div class="logo-container">
+                <a href="../../index.html" class="back-btn" aria-label="Retour au menu">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4 12H20M4 12L8 8M4 12L8 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="header-title">
+                <span data-i18n="legal.header_title">INFORMATIONS LÉGALES</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="legal-content">
+
+        <section id="privacy" class="legal-card">
+            <h2 data-i18n="legal.privacy.title">Politique de Confidentialité</h2>
+
+            <h3 data-i18n="legal.privacy.subtitle1">Utilisateurs non connectés</h3>
+            <p data-i18n="legal.privacy.text1">Si vous utilisez le site sans créer de compte ou sans vous connecter, <strong>aucune donnée n'est collectée</strong>. Votre activité reste strictement locale et anonyme.</p>
+
+            <h3 data-i18n="legal.privacy.subtitle2">Utilisateurs connectés</h3>
+            <p data-i18n="legal.privacy.text2">Lorsque vous êtes connecté à un compte, nous collectons uniquement vos <strong>scores de jeu</strong> associés à votre <strong>pseudo</strong>. Cette collecte a pour uniques objectifs de :</p>
+            <ul>
+                <li data-i18n="legal.privacy.list1">Vous fournir un historique détaillé de vos performances.</li>
+                <li data-i18n="legal.privacy.list2">Générer des statistiques sur l'ensemble des joueurs et sur votre évolution personnelle.</li>
+                <li data-i18n="legal.privacy.list3">Vous permettre d'être en compétition avec les joueurs du monde entier via le classement général.</li>
+            </ul>
+        </section>
+
+        <section id="cookies" class="legal-card">
+            <h2 data-i18n="legal.cookies.title">Gestion des Cookies</h2>
+            <p class="legal-intro" data-i18n="legal.cookies.intro">Ce site n'utilise <strong>aucun cookie publicitaire, commercial ou de traçage</strong> exploitant votre vie numérique.</p>
+
+            <h3 data-i18n="legal.cookies.subtitle1">Absence de bandeau cookie</h3>
+            <p data-i18n="legal.cookies.text1">Conformément aux recommandations de la CNIL, aucun bandeau de consentement n'est affiché lors de votre arrivée sur le site. En effet, les technologies utilisées sont strictement techniques et nécessaires au confort de navigation.</p>
+
+            <h3 data-i18n="legal.cookies.subtitle2">Utilisation du Stockage Local</h3>
+            <p data-i18n="legal.cookies.text2">Nous utilisons exclusivement le "Local Storage" de votre navigateur pour conserver votre personnalisation d'une session à l'autre :</p>
+            <ul>
+                <li data-i18n="legal.cookies.list1">Mémoriser vos préférences visuelles.</li>
+                <li data-i18n="legal.cookies.list2">Conserver vos réglages de jeux.</li>
+            </ul>
+            <p data-i18n="legal.cookies.outro">Ces données techniques restent sur votre appareil.</p>
+        </section>
+
+        <section id="terms" class="legal-card">
+            <h2 data-i18n="legal.terms.title">Mentions Légales</h2>
+
+            <h3 data-i18n="legal.terms.host_title">Hébergeur du site</h3>
+            <ul>
+                <li><strong>o2switch</strong></li>
+                <li>Chem. des Pardiaux, 63000 Clermont-Ferrand, France</li>
+                <li>04 44 44 60 40</li>
+                <li><a href="https://www.o2switch.fr" target="_blank" style="color: var(--accent-color); text-decoration: none;">https://www.o2switch.fr</a></li>
+            </ul>
+        </section>
+
+    </main>
+
+    <div id="footer-placeholder"></div>
+    <script defer src="../../footer/footer_loader.js"></script>
+
+    <script defer src="../script.js"></script>
+    <script defer src="legal.js"></script>
+
+</body>
+</html>

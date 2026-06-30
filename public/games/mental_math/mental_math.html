@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en" class="theme-lvl-4 dark-dominant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Stimuludo | Mental Math & Arithmetic Agility Test</title>
+
+    <link rel="preload" href="/fonts/rubik-v31-latin-500.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/rubik-v31-latin-700.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/rubik-v31-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="mental_math.css">
+
+    <script>
+        (function() {
+            const applyThemeSettings = () => {
+                try {
+                    const savedStep = localStorage.getItem('themeStep');
+                    const savedColor = localStorage.getItem('accentColor');
+                    const savedColorSecondary = localStorage.getItem('accentColorSecondary');
+                    const savedColorRecord = localStorage.getItem('recordColor');
+                    const savedOpaque = localStorage.getItem('globalOpaque');
+
+
+                                                            let savedLang = localStorage.getItem('siteLanguage');
+                if (!savedLang) {
+                    const browserLang = navigator.language || navigator.userLanguage;
+                    savedLang = browserLang.startsWith('fr') ? 'fr' : 'en';
+                }
+
+                    const savedPatternMode = localStorage.getItem('patternMode');
+                    const oldHidePattern = localStorage.getItem('hideDotPattern');
+                    let modeToApply = 'dots'; 
+
+                    if (savedPatternMode) { 
+                        modeToApply = savedPatternMode; 
+                    } else if (oldHidePattern === 'true') { 
+                        modeToApply = 'none'; 
+                    }
+
+                    const savedOpacity = localStorage.getItem('patternOpacity') || '50'; 
+                    document.documentElement.style.setProperty('--pattern-opacity', savedOpacity / 100);
+                    document.documentElement.setAttribute('data-pattern', modeToApply);
+                    document.documentElement.setAttribute('lang', savedLang);
+
+                    const savedColor3 = localStorage.getItem('customBgColor');
+                    if (savedColor3) {
+                        document.documentElement.style.setProperty('--bg-main', savedColor3);
+                    } else {
+                        document.documentElement.style.removeProperty('--bg-main');
+                    }
+
+                    const savedColor4 = localStorage.getItem('customCardBgColor');
+                    if (savedColor4) {
+                        document.documentElement.style.setProperty('--card-bg', savedColor4);
+                    } else {
+                        document.documentElement.style.removeProperty('--card-bg');
+                    }
+
+                    if (savedColor) document.documentElement.style.setProperty('--accent-color', savedColor);
+                    if (savedColorSecondary) document.documentElement.style.setProperty('--accent-color-secondary', savedColorSecondary);
+                    if (savedColorRecord) document.documentElement.style.setProperty('--record-color', savedColorRecord);
+
+                    if (savedStep) {
+
+                                                document.documentElement.classList.remove('theme-lvl-1', 'theme-lvl-2', 'theme-lvl-3', 'theme-lvl-4', 'theme-lvl-5', 'dark-dominant'); 
+                        document.documentElement.classList.add('theme-lvl-' + savedStep);
+                        if (parseInt(savedStep) >= 3) {
+                            document.documentElement.classList.add('dark-dominant');
+                        }
+                    }
+
+                    if (savedOpaque === 'true' || savedOpaque === null) {
+                        document.documentElement.classList.add('global-opaque');
+                    } else {
+                        document.documentElement.classList.remove('global-opaque');
+                    }
+
+                } catch (e) { console.error(e); }
+            };
+
+            applyThemeSettings();
+
+            window.addEventListener('pageshow', (event) => {
+                if (event.persisted) {
+                    applyThemeSettings();
+                } else {
+                    setTimeout(applyThemeSettings, 10);
+                }
+            });
+
+            window.addEventListener('visibilitychange', () => { 
+                if (document.visibilityState === 'visible') applyThemeSettings(); 
+            });
+        })();
+</script>
+
+    <meta name="stimuludo-seo-anchor" content="start">
+    
+    <meta name="description" content="Evaluate your arithmetic calculation speed. Solve series of operations under time constraints to train numerical agility and beat your records.">
+    
+    <link rel="canonical" href="https://stimuludo.com/games/mental_math/mental_math.html" />
+
+    <link rel="alternate" hreflang="en" href="https://stimuludo.com/games/mental_math/mental_math.html" />
+    <link rel="alternate" hreflang="en" href="https://stimuludo.com/games/mental_math/mental_math.html" />
+    <link rel="alternate" hreflang="x-default" href="https://stimuludo.com/games/mental_math/mental_math.html" />
+    
+    <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png?v=2" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg?v=2" />
+    <link rel="shortcut icon" href="/favicon/favicon.ico?v=2" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png?v=2" />
+    <meta name="apple-mobile-web-app-title" content="Stimuludo" />
+    <link rel="manifest" href="/favicon/site.webmanifest?v=2" crossorigin="use-credentials" />
+    
+    <meta name="theme-color" content="#4CAF50">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://stimuludo.com/games/mental_math/mental_math.html">
+    
+    <meta property="og:title" content="Stimuludo | Mental Math Test">
+    <meta property="og:description" content="Evaluate your arithmetic speed and track the evolution of your numerical performance.">
+    <meta property="og:image" content="https://stimuludo.com/banniere-reseaux.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://stimuludo.com/games/mental_math/mental_math.html">
+    <meta name="twitter:title" content="Stimuludo | Mental Math Test">
+    <meta name="twitter:description" content="Evaluate your arithmetic speed and track the evolution of your numerical performance.">
+    <meta name="twitter:image" content="https://stimuludo.com/banniere-reseaux.jpg">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Mental Math Test - Stimuludo",
+      "url": "https://stimuludo.com/games/mental_math/mental_math.html",
+      "description": "Interactive brain training exercise to test and improve the execution speed of simple mathematical operations."
+    }
+</script>
+
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="cfe1784e-702b-4eba-9df5-2b043792e437"></script>
+    <meta name="stimuludo-seo-anchor" content="end">
+</head>
+<body class="game-page">
+
+    <div id="bg-pattern" aria-hidden="true"></div>
+
+    <header>
+        <div class="layout-wrapper header-inner">
+            <div class="logo-container">
+                <a href="../../index.html" class="back-btn" aria-label="Retour au menu">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4 12H20M4 12L8 8M4 12L8 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="header-title">
+                <span data-i18n="mental_math.header_title">CALCUL MENTAL</span>
+            </div>
+
+            <nav>
+                <a href="../../stats/stats.html" class="nav-link" id="nav-stats" style="display: none;" title="Statistiques">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-4"/></svg>
+                </a>
+
+                <div class="nav-divider" id="stats-divider" style="display: none;"></div>
+
+                <a href="../../login/login.html" class="nav-link" id="nav-login" title="Connexion">
+                    <svg id="icon-login" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12L16 12M16 12L12.5 9M16 12L12.5 15"/><path d="M9 7C9.01406 4.82497 9.11051 3.64706 9.87889 2.87868C10.7576 2 12.1718 2 15 2L16 2C18.8286 2 20.2429 2 21.1215 2.87868C22 3.75736 22 5.17157 22 8L22 16C22 18.8284 22 20.2426 21.1215 21.1213C20.2429 22 18.8286 22 16 22H15C12.1718 22 10.7576 22 9.87889 21.1213C9.11051 20.3529 9.01406 19.175 9 17"/></svg>
+                    <svg id="icon-logout" style="display: none;" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0.1" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14.9453 1.25C13.5778 1.24998 12.4754 1.24996 11.6085 1.36652C10.7084 1.48754 9.95048 1.74643 9.34857 2.34835C8.82363 2.87328 8.55839 3.51836 8.41916 4.27635C8.28387 5.01291 8.25799 5.9143 8.25196 6.99583C8.24966 7.41003 8.58357 7.74768 8.99778 7.74999C9.41199 7.7523 9.74964 7.41838 9.75194 7.00418C9.75803 5.91068 9.78643 5.1356 9.89448 4.54735C9.99859 3.98054 10.1658 3.65246 10.4092 3.40901C10.686 3.13225 11.0746 2.9518 11.8083 2.85315C12.5637 2.75159 13.5648 2.75 15.0002 2.75H16.0002C17.4356 2.75 18.4367 2.75159 19.1921 2.85315C19.9259 2.9518 20.3144 3.13225 20.5912 3.40901C20.868 3.68577 21.0484 4.07435 21.1471 4.80812C21.2486 5.56347 21.2502 6.56459 21.2502 8V16C21.2502 17.4354 21.2486 18.4365 21.1471 19.1919C21.0484 19.9257 20.868 20.3142 20.5912 20.591C20.3144 20.8678 19.9259 21.0482 19.1921 21.1469C18.4367 21.2484 17.4356 21.25 16.0002 21.25H15.0002C13.5648 21.25 12.5637 21.2484 11.8083 21.1469C11.0746 21.0482 10.686 20.8678 10.4092 20.591C10.1658 20.3475 9.99859 20.0195 9.89448 19.4527C9.78643 18.8644 9.75803 18.0893 9.75194 16.9958C9.74964 16.5816 9.41199 16.2477 8.99778 16.25C8.58357 16.2523 8.24966 16.59 8.25196 17.0042C8.25799 18.0857 8.28387 18.9871 8.41916 19.7236C8.55839 20.4816 8.82363 21.1267 9.34857 21.6517C9.95048 22.2536 10.7084 22.5125 11.6085 22.6335C12.4754 22.75 13.5778 22.75 14.9453 22.75H16.0551C17.4227 22.75 18.525 22.75 19.392 22.6335C20.2921 22.5125 21.0499 22.2536 21.6519 21.6517C22.2538 21.0497 22.5127 20.2919 22.6337 19.3918C22.7503 18.5248 22.7502 17.4225 22.7502 16.0549V7.94513C22.7502 6.57754 22.7503 5.47522 22.6337 4.60825C22.5127 3.70814 22.2538 2.95027 21.6519 2.34835C21.0499 1.74643 20.2921 1.48754 19.392 1.36652C18.525 1.24996 17.4227 1.24998 16.0551 1.25H14.9453Z"/>
+                        <path d="M15 11.25C15.4142 11.25 15.75 11.5858 15.75 12C15.75 12.4142 15.4142 12.75 15 12.75H4.02744L5.98809 14.4306C6.30259 14.7001 6.33901 15.1736 6.06944 15.4881C5.79988 15.8026 5.3264 15.839 5.01191 15.5694L1.51191 12.5694C1.34567 12.427 1.25 12.2189 1.25 12C1.25 11.7811 1.34567 11.573 1.51191 11.4306L5.01191 8.43056C5.3264 8.16099 5.79988 8.19741 6.06944 8.51191C6.33901 8.8264 6.30259 9.29988 5.98809 9.56944L4.02744 11.25H15Z"/>
+                    </svg>
+                </a>
+
+                <div class="nav-divider"></div>
+
+                <a href="../../settings/settings.html" class="nav-link" aria-label="Paramètres globaux">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" stroke="currentColor" stroke-width="0.5" viewBox="0 0 38 38"><path fill-rule="evenodd" transform="translate(-941 -161)" d="M962.5,161 C964.156854,161 965.5,162.343146 965.5,163.999937 L965.500061,164.970698 C965.919867,165.124369 966.332687,165.295574 966.737551,165.483787 L967.424621,164.797204 C968.596194,163.625631 970.495689,163.625631 971.667262,164.797204 L975.202796,168.332738 C976.374369,169.504311 976.374369,171.403806 975.203046,172.575128 L974.516213,173.262449 C974.704511,173.667497 974.875786,174.080508 975.029511,174.50051 L976,174.5 C977.656854,174.5 979,175.843146 979,177.5 L979,182.5 C979,184.156854 977.656854,185.5 976.000063,185.5 L975.029302,185.500061 C974.875631,185.919867 974.704425,186.332687 974.516213,186.737551 L975.202796,187.424621 C976.374369,188.596194 976.374369,190.495689 975.202796,191.667262 L971.667262,195.202796 C970.495689,196.374369 968.596194,196.374369 967.424872,195.203046 L966.737551,194.516213 C966.332687,194.704426 965.919867,194.875631 965.500061,195.029302 L965.5,196 C965.5,197.656854 964.156854,199 962.5,199 L957.5,199 C955.843146,199 954.5,197.656854 954.5,195.999474 L954.50051,195.029511 C954.080507,194.875786 953.667497,194.704511 953.262449,194.516213 L952.575379,195.202796 C951.403806,196.374369 949.504311,196.374369 948.332738,195.202796 L944.797204,191.667262 C943.625631,190.495689 943.625631,188.596194 944.796954,187.424872 L945.483787,186.737551 C945.295574,186.332687 945.124369,185.919867 944.970698,185.500061 L944,185.5 C942.343146,185.5 941,184.156854 941,182.5 L941,177.5 C941,175.843146 942.343146,174.5 944.000526,174.5 L944.970489,174.50051 C945.124214,174.080507 945.295489,173.667497 945.483787,173.262449 L944.797204,172.575379 C943.625631,171.403806 943.625631,169.504311 944.797204,168.332738 L948.332738,164.797204 C949.504311,163.625631 951.403806,163.625631 952.575128,164.796954 L953.262449,165.483787 C953.532481,165.358255 953.806052,165.240289 954.082874,165.130045 L954.50051,164.970489 L954.5,164 C954.5,162.343146 955.843146,161 957.5,161 L962.5,161 Z M962.5,163 L957.5,163 C956.947715,163 956.5,163.447715 956.5,163.999474 L956.501273,166.420434 L955.800477,166.640493 C955.01462,166.887262 954.253653,167.203065 953.525375,167.583668 L952.874685,167.923722 L951.161165,166.211418 C950.770641,165.820893 950.137476,165.820893 949.746952,166.211418 L946.211418,169.746952 C945.820893,170.137476 945.820893,170.770641 946.211668,171.161416 L947.923722,172.874685 L947.583668,173.525375 C947.203065,174.253653 946.887262,175.01462 946.640493,175.800477 L946.420434,176.501273 L944,176.5 C943.447715,176.5 943,176.947715 943,177.5 L943,182.5 C943,183.052285 943.447715,183.5 944.000063,183.5 L946.420827,183.500152 L946.640784,184.200449 C946.887511,184.985979 947.203215,185.746633 947.583668,186.474625 L947.923722,187.125315 L946.211418,188.838835 C945.820893,189.229359 945.820893,189.862524 946.211418,190.253048 L949.746952,193.788582 C950.137476,194.179107 950.770641,194.179107 951.161416,193.788332 L952.874685,192.076278 L953.525375,192.416332 C954.253653,192.796935 955.01462,193.112738 955.800477,193.359507 L956.501273,193.579566 L956.5,196 C956.5,196.552285 956.947715,197 957.5,197 L962.5,197 C963.052285,197 963.5,196.552285 963.5,195.999937 L963.500152,193.579173 L964.200449,193.359216 C964.985979,193.112489 965.746633,192.796785 966.474625,192.416332 L967.125315,192.076278 L968.838835,193.788582 C969.229359,194.179107 969.862524,194.179107 970.253048,193.788582 L973.788582,190.253048 C974.179107,189.862524 974.179107,189.229359 973.788332,188.838584 L972.076278,187.125315 L972.416332,186.474625 C972.796785,185.746633 973.112489,184.985979 973.359216,184.200449 L973.579173,183.500152 L976,183.5 C976.552285,183.5 977,183.052285 977,182.5 L977,177.5 C977,176.947715 976.552285,176.5 976.000526,176.5 L973.579566,176.501273 L973.359507,175.800477 C973.112738,175.01462 972.796935,174.253653 972.416332,173.525375 L972.076278,172.874685 L973.788582,171.161165 C974.179107,170.770641 974.179107,170.137476 973.788582,169.746952 L970.253048,166.211418 C969.862524,165.820893 969.229359,165.820893 968.838584,166.211668 L967.125315,167.923722 L966.474625,167.583668 C965.746633,167.203215 964.985979,166.887511 964.200449,166.640784 L963.500152,166.420827 L963.5,164 C963.5,163.447715 963.052285,163 962.5,163 Z M960,173 C963.865993,173 967,176.134007 967,180 C967,183.865993 963.865993,187 960,187 C956.134007,187 953,183.865993 953,180 C953,176.134007 956.134007,173 960,173 Z M960,175 C957.238576,175 955,177.238576 955,180 C955,182.761424 957.238576,185 960,185 C962.761424,185 965,182.761424 965,180 C965,177.238576 962.761424,175 960,175 Z"/></svg>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <div id="settings-panel" class="panel-hidden" aria-hidden="true">
+        <h3 data-i18n="mental_math.settings.title">Configuration</h3>
+
+        <div class="mode-switch-wrapper">
+            <input type="radio" id="toggle-ranked" name="mode-toggle" value="ranked" checked>
+            <label for="toggle-ranked" data-i18n="mental_math.intro.ranked">CLASSÉ</label>
+
+            <input type="radio" id="toggle-sandbox" name="mode-toggle" value="sandbox">
+            <label for="toggle-sandbox" data-i18n="mental_math.intro.sandbox">LIBRE</label>
+
+            <div class="mode-slider"></div>
+        </div>
+
+        <div class="separator" style="margin-top: 5px;"></div>
+
+        <div class="setting-group" id="settings-ranked-group" style="display: none;">
+            <div class="setting-row">
+                <label for="time-ranked-val" data-i18n="mental_math.settings.time">Temps :</label>
+                <select id="time-ranked-val" class="settings-select">
+                    <option value="30">30s</option>
+                    <option value="60">60s</option>
+                </select>
+            </div>
+
+            <div class="setting-row" style="margin-top: 15px;">
+                <label for="diff-ranked-val" data-i18n="mental_math.settings.difficulty">Intervalles (+,-,x) :</label>
+                <select id="diff-ranked-val" class="settings-select">
+                    <option value="1-9" data-i18n="mental_math.settings.int_1_9">1 à 9</option>
+                    <option value="1-99" data-i18n="mental_math.settings.int_1_99">1 à 99</option>
+                </select>
+            </div>
+
+            <div class="op-check" style="margin-top: 15px;">
+                <input type="checkbox" id="show-flash-ranked" checked>
+                <label for="show-flash-ranked" data-i18n="mental_math.settings.flash_effect">Flash visuel</label>
+            </div>
+        </div>
+
+        <div class="setting-group" id="settings-sandbox-group" style="display: none;">
+
+            <div class="setting-row">
+                <label for="time-sandbox-val" data-i18n="mental_math.settings.time">Temps (sec) :</label>
+                <input type="number" id="time-sandbox-val" value="60" min="0" placeholder="∞">
+            </div>
+            <p class="hint-text" style="margin-bottom: 15px;" data-i18n="mental_math.settings.time_hint">Mettez 0 pour jouer sans limite.</p>
+
+            <div class="op-check">
+                <input type="checkbox" id="show-ms">
+                <label for="show-ms" data-i18n="mental_math.settings.show_ms">Afficher les centièmes</label>
+            </div>
+
+            <div class="op-check" style="margin-top: 10px;">
+                <input type="checkbox" id="allow-pause" checked>
+                <label for="allow-pause" data-i18n="mental_math.settings.allow_pause">Autoriser la pause</label>
+            </div>
+
+            <div class="op-check" style="margin-top: 10px; margin-bottom: 20px;">
+                <input type="checkbox" id="show-flash-sandbox" checked>
+                <label for="show-flash-sandbox" data-i18n="mental_math.settings.flash_effect">Flash visuel</label>
+            </div>
+
+            <hr class="separator" style="margin-top: 0;">
+
+            <h4 class="setting-title" data-i18n="mental_math.settings.ops_title">Opérations et Intervalles</h4>
+
+            <div class="operations-list">
+                <div class="op-check">
+                    <input type="checkbox" id="op-add" checked>
+                    <label for="op-add" data-i18n="mental_math.settings.op_add">Addition ( + )</label>
+                </div>
+                <div class="range-inputs small-range">
+                    <input type="number" id="min-add" value="1" min="0">
+                    <span data-i18n="mental_math.settings.to">à</span>
+                    <input type="number" id="max-add" value="20" min="1">
+                </div>
+
+                <div class="op-check">
+                    <input type="checkbox" id="op-sub" checked>
+                    <label for="op-sub" data-i18n="mental_math.settings.op_sub">Soustraction ( - )</label>
+                </div>
+                <div class="range-inputs small-range">
+                    <input type="number" id="min-sub" value="1" min="0">
+                    <span data-i18n="mental_math.settings.to">à</span>
+                    <input type="number" id="max-sub" value="20" min="1">
+                </div>
+
+                <div class="op-check">
+                    <input type="checkbox" id="op-mul" checked>
+                    <label for="op-mul" data-i18n="mental_math.settings.op_mul">Multiplication ( x )</label>
+                </div>
+                <div class="range-inputs small-range">
+                    <input type="number" id="min-mul" value="1" min="0">
+                    <span data-i18n="mental_math.settings.to">à</span>
+                    <input type="number" id="max-mul" value="10" min="1">
+                </div>
+
+                <div class="op-check">
+                    <input type="checkbox" id="op-div">
+                    <label for="op-div" data-i18n="mental_math.settings.op_div">Division ( / )</label>
+                </div>
+                <div class="range-inputs small-range">
+                    <input type="number" id="min-div" value="1" min="1">
+                    <span data-i18n="mental_math.settings.to">à</span>
+                    <input type="number" id="max-div" value="10" min="1">
+                </div>
+            </div>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="settings-actions">
+            <button id="close-settings" class="secondary-btn" data-i18n="mental_math.settings.cancel">ANNULER</button>
+            <button id="save-settings-btn" class="primary-btn" data-i18n="mental_math.settings.save">APPLIQUER</button>
+        </div>
+    </div>
+
+    <main class="layout-wrapper main-content">
+
+        <div class="game-board">
+
+            <div class="internal-dot-pattern" aria-hidden="true"></div>
+
+            <div id="game-over-overlay" class="overlay hidden">
+                <button id="exit-fullscreen-overlay-btn" class="exit-fs-btn" aria-label="Quitter le plein écran">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+                
+                <div class="overlay-content">
+                    
+                    <div id="new-record-msg" class="new-record hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M2.5.5A.5.5 0 0 1 3 0h10a.5.5 0 0 1 .5.5q0 .807-.034 1.536a3 3 0 1 1-1.133 5.89c-.79 1.865-1.878 2.777-2.833 3.011v2.173l1.425.356c.194.048.377.135.537.255L13.3 15.1a.5.5 0 0 1-.3.9H3a.5.5 0 0 1-.3-.9l1.838-1.379c.16-.12.343-.207.537-.255L6.5 13.11v-2.173c-.955-.234-2.043-1.146-2.833-3.012a3 3 0 1 1-1.132-5.89A33 33 0 0 1 2.5.5m.099 2.54a2 2 0 0 0 .72 3.935c-.333-1.05-.588-2.346-.72-3.935m10.083 3.935a2 2 0 0 0 .72-3.935c-.133 1.59-.388 2.885-.72 3.935"/>
+                        </svg>
+                        <span data-i18n="mental_math.results.new_record">NOUVEAU RECORD !</span>
+                    </div>
+
+                    <div id="results-ranked" class="results-view hidden">
+                        <div class="result-item centered-score-item">
+                            <span class="res-label" data-i18n="mental_math.results.score">Score Final</span>
+                            <div class="big-score-container">
+                                <span class="res-value big" id="ranked-score">0</span>
+                                <span class="score-unit">pts</span>
+                            </div>
+                        </div>
+
+                        <div class="distribution-chart-container">
+                            <div class="chart-tooltip hidden"></div>
+                            <div class="hover-line hidden"></div>
+                            <svg class="curve-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+                                <path class="curve-fill" d="" fill="var(--accent-color)" opacity="0.2" stroke="none"></path>
+                                <path class="curve-path" d="" fill="none" stroke="var(--accent-color)" stroke-width="2" vector-effect="non-scaling-stroke"></path>
+                            </svg>
+                            <div id="marker-best" class="score-marker marker-best hidden">
+                                <div class="marker-label" data-i18n="mental_math.results.best">Meilleur</div>
+                                <div class="marker-line"></div>
+                            </div>
+                            <div id="marker-current" class="score-marker marker-current">
+                                <div class="marker-label" data-i18n="mental_math.results.you">Vous</div>
+                                <div class="marker-line"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="results-sandbox" class="results-view hidden">
+                        <div class="result-item centered-score-item">
+                            <span class="res-label" data-i18n="mental_math.results.score">Score Final</span>
+                            <div class="big-score-container">
+                                <span class="res-value big" id="sandbox-score">0</span>
+                                <span class="score-unit">pts</span>
+                            </div>
+                        </div>
+
+                        <div class="sandbox-stats">
+                            <div class="stat-box-small">
+                                <span class="stat-title" data-i18n="mental_math.results.speed">Vitesse</span>
+                                <span class="stat-value" id="stat-opm">-- /min</span>
+                            </div>
+                            <div class="stat-box-small">
+                                <span class="stat-title" data-i18n="mental_math.results.avg_time">Moyenne</span>
+                                <span class="stat-value" id="stat-avg-time">--s</span>
+                            </div>
+                            <div class="stat-box-small">
+                                <span class="stat-title" data-i18n="mental_math.results.fastest">Plus rapide</span>
+                                <span class="stat-value" id="stat-fastest">--s</span>
+                            </div>
+                            <div class="stat-box-small">
+                                <span class="stat-title" data-i18n="mental_math.results.slowest">Plus lent</span>
+                                <span class="stat-value" id="stat-slowest">--s</span>
+                            </div>
+                        </div>
+
+                        <div class="history-chart" id="history-chart"></div>
+                    </div>
+
+                    <button id="restart-btn" class="primary-btn big-btn" data-i18n="mental_math.results.replay">Rejouer</button>
+                </div>
+            </div>
+
+            <div class="math-container">
+                <div class="game-header">
+                    <div class="stat-box score-box"><span id="score">0</span></div>
+
+                    <div class="timer-display">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-stopwatch" viewBox="0 0 16 16">
+                            <path d="M8.5 5.6a.5.5 0 1 0-1 0v2.9h-3a.5.5 0 0 0 0 1H8a.5.5 0 0 0 .5-.5z"/>
+                            <path d="M6.5 1A.5.5 0 0 1 7 .5h2a.5.5 0 0 1 0 1v.57c1.36.196 2.594.78 3.584 1.64l.012-.013.354-.354-.354-.353a.5.5 0 0 1 .707-.708l1.414 1.415a.5.5 0 1 1-.707.707l-.353-.354-.354.354-.013.012A7 7 0 1 1 7 2.071V1.5a.5.5 0 0 1-.5-.5M8 3a6 6 0 1 0 .001 12A6 6 0 0 0 8 3"/>
+                        </svg>
+                        <div class="timer-text"><span id="timer">60</span>s</div>
+                    </div>
+
+                    <button id="settings-toggle" class="icon-btn settings-btn" aria-label="Paramètres">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sliders" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1z"/>
+                        </svg>                    
+                    </button>
+                </div>
+
+                <div id="status-overlay" class="hidden"></div>
+
+                <div id="operation-display">
+                    <span class="op-part part-a">?</span>
+                    <span class="op-part part-symbol">?</span>
+                    <span class="op-part part-b">?</span>
+                </div>
+
+                <div class="game-actions-row">
+                    <button id="pause-btn" class="icon-btn" aria-label="Pause" style="display: none;">
+                        <svg id="icon-pause" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5zm5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5z"/></svg>
+                        <svg id="icon-play" class="hidden" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/></svg>
+                    </button>
+
+                    <button id="ingame-restart-btn" class="icon-btn" aria-label="Recommencer" style="display: none;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
+                            <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
+                        </svg>
+                    </button>
+
+                    <div id="input-wrapper" class="focused">
+                        <div id="visual-input">
+                            <span id="input-value"></span><span id="fixed-cursor"></span>
+                        </div>
+                    </div>
+
+                    <button id="fullscreen-btn" class="icon-btn" aria-label="Plein écran">
+                        <svg id="icon-expand" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M5.828 10.172a.5.5 0 0 0-.707 0l-4.096 4.096V11.5a.5.5 0 0 0-1 0v3.975a.5.5 0 0 0 .5.5H4.5a.5.5 0 0 0 0-1H1.732l4.096-4.096a.5.5 0 0 0 0-.707m4.344 0a.5.5 0 0 1 .707 0l4.096 4.096V11.5a.5.5 0 1 1 1 0v3.975a.5.5 0 0 1-.5.5H11.5a.5.5 0 0 1 0-1h2.768l-4.096-4.096a.5.5 0 0 1 0-.707m0-4.344a.5.5 0 0 0 .707 0l4.096-4.096V4.5a.5.5 0 1 0 1 0V.525a.5.5 0 0 0-.5-.5H11.5a.5.5 0 0 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 0 .707m-4.344 0a.5.5 0 0 1-.707 0L1.025 1.732V4.5a.5.5 0 0 1-1 0V.525a.5.5 0 0 1 .5-.5H4.5a.5.5 0 0 1 0 1H1.732l4.096 4.096a.5.5 0 0 1 0 .707"/>
+                        </svg>
+                        <svg id="icon-compress" class="hidden" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrows-angle-contract" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M.172 15.828a.5.5 0 0 0 .707 0l4.096-4.096V14.5a.5.5 0 1 0 1 0v-3.975a.5.5 0 0 0-.5-.5H1.5a.5.5 0 1 0 0 1h2.768L.172 15.121a.5.5 0 0 0 0 .707zM15.828.172a.5.5 0 0 0-.707 0l-4.096 4.096V1.5a.5.5 0 1 0-1 0v3.975a.5.5 0 0 0 .5.5H14.5a.5.5 0 1 0 0-1h-2.768L15.828.879a.5.5 0 0 0 0-.707zM.172.172a.5.5 0 0 1 .707 0l4.096 4.096V1.5a.5.5 0 1 1 1 0v3.975a.5.5 0 0 1-.5.5H1.5a.5.5 0 1 1 0-1h2.768L.172.879a.5.5 0 0 1 0-.707zm15.656 15.656a.5.5 0 0 1-.707 0l-4.096-4.096V14.5a.5.5 0 1 1-1 0v-3.975a.5.5 0 0 1 .5-.5H14.5a.5.5 0 1 1 0 1h-2.768l4.096 4.096a.5.5 0 0 1 0 .707z"/>
+                        </svg>
+                    </button>
+                </div>
+                
+                <div id="keyboard-container"></div>
+
+                <p id="pause-hint" class="hint-pause" data-i18n="mental_math.game.pause_hint"></p>
+            </div>
+
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+    
+    <script src="../../shared/seeded-rng.js"></script>
+    <script defer src="../../footer/footer_loader.js"></script>
+
+    <script defer src="../../script.js"></script>
+    <script defer src="mental_math.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,1178 @@
+/* ==========================================================================
+   TABLE DES MATIÈRES
+   0. POLICES LOCALES
+   1. VARIABLES & CONFIGURATION
+   2. SYSTÈME DE THÈMES (Niveaux 1-5 & Modes)
+   3. RESET & BASE (Body, Liens, Boutons)
+   4. LAYOUT GLOBAL & BACKGROUNDS (Wrapper, Main, Patterns)
+   5. HEADER & NAVIGATION
+   6. FOOTER
+   7. COMPOSANT : COLOR PICKER
+   8. PAGE D'ACCUEIL (Recherche & Grille de jeux)
+   9. UI JEUX PARTAGÉE (Game Board, HUD, Overlays, Settings)
+   10. COMPOSANT GLOBAL : VIRTUAL NUMPAD
+   ========================================================================== */
+
+/* ==========================================================================
+   0. POLICES LOCALES
+   ========================================================================== */
+/* rubik-300 - latin */
+@font-face {
+  font-display: swap; 
+  font-family: 'Rubik';
+  font-style: normal;
+  font-weight: 300;
+  src: url('/fonts/rubik-v31-latin-300.woff2') format('woff2');
+}
+/* rubik-regular (400) - latin */
+@font-face {
+  font-display: swap; 
+  font-family: 'Rubik';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/rubik-v31-latin-regular.woff2') format('woff2');
+}
+/* rubik-500 - latin */
+@font-face {
+  font-display: swap; 
+  font-family: 'Rubik';
+  font-style: normal;
+  font-weight: 500;
+  src: url('/fonts/rubik-v31-latin-500.woff2') format('woff2');
+}
+/* rubik-600 - latin */
+@font-face {
+  font-display: swap; 
+  font-family: 'Rubik';
+  font-style: normal;
+  font-weight: 600;
+  src: url('/fonts/rubik-v31-latin-600.woff2') format('woff2');
+}
+/* rubik-700 - latin */
+@font-face {
+  font-display: swap; 
+  font-family: 'Rubik';
+  font-style: normal;
+  font-weight: 700;
+  src: url('/fonts/rubik-v31-latin-700.woff2') format('woff2');
+}
+
+/* ==========================================================================
+   1. VARIABLES & CONFIGURATION
+   ========================================================================== */
+:root {
+    /* --- COULEURS --- */
+    --accent-color: #72DE5F; 
+    --accent-glow: color-mix(in srgb, var(--accent-color), transparent 85%);
+
+    --accent-color-secondary: #FF4545; 
+    --accent-glow-secondary: color-mix(in srgb, var(--accent-color-secondary), transparent 85%);
+    
+    /* --- TYPOGRAPHIE --- */
+    --font-heading: 'Rubik', sans-serif;
+    --font-body: 'Rubik', sans-serif;
+    
+    /* --- UI CONSTANTES --- */
+    --radius-md: 8px;
+    --transition-fast: 0.2s ease;
+    --transition-smooth: 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* ==========================================================================
+   2. SYSTÈME DE THÈMES
+   ========================================================================== */
+
+/* --- Niveau 1 : Plein Jour --- */
+html.theme-lvl-1 {
+    --bg-main: #f0f0f0;        
+    --card-bg: #FFFFFF;
+    --border-color: #c6cbd1;  
+    --dot-color: #b5bec7;
+    --text-primary: #111827;  
+    --text-secondary: #64748B; 
+    --text-tertiary: #b6b5b5;
+    --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+/* --- Niveau 2 : Temps Couvert --- */
+html.theme-lvl-2 {
+    --bg-main: #d2d5da;        
+    --card-bg: #e9eaeb;        
+    --border-color: #a2a5ac;   
+    --dot-color: #878c95;
+    --text-primary: #111827;   
+    --text-secondary: #4b5563;
+    --text-tertiary: #a3a3a4;
+    --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.08);
+}
+
+/* --- Niveau 3 : Crépuscule --- */
+html.theme-lvl-3 {
+    --bg-main: #3f3f46;        
+    --card-bg: #52525b;        
+    --border-color: #71717a;   
+    --dot-color: #71717a;
+    --text-primary: #ffffff;   
+    --text-secondary: #e4e4e7;
+    --text-tertiary: #9c9ca2;
+    --shadow-card: none;
+}
+
+/* --- Niveau 4 : Nuit --- */
+html.theme-lvl-4 {
+    --bg-main: #18181b;        
+    --card-bg: #27272a;
+    --border-color: #3f3f46;   
+    --dot-color: #52525b;
+    --text-primary: #fafafa;   
+    --text-secondary: #d4d4d8; 
+    --text-tertiary: #838385;
+    --shadow-card: none;
+}
+
+/* --- Niveau 5 : Minuit --- */
+html.theme-lvl-5 {
+    --bg-main: #000000;        
+    --card-bg: #121212;
+    --border-color: #27272a;   
+    --dot-color: #595959;
+    --text-primary: #EDEDED;   
+    --text-secondary: #A1A1AA;
+    --text-tertiary: #87878d; 
+    --shadow-card: none;
+}
+
+/* --- Gestion des Ombres & Modes Sombres --- */
+html.dark-dominant {
+    --accent-glow: color-mix(in srgb, var(--accent-color), transparent 75%);
+    --shadow-hover: 0 0 25px var(--accent-glow); 
+    --shadow-card: none; 
+}
+html:not(.dark-dominant) {
+    --shadow-hover: 0 10px 25px -5px var(--accent-glow);
+}
+
+/* ==========================================================================
+   3. RESET & BASE
+   ========================================================================== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+button:focus, button:focus-visible,
+a:focus, a:focus-visible,
+input:focus, input:focus-visible,
+select:focus, textarea:focus {
+    outline: none !important;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-variant-ligatures: none;
+    transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    display: flex; flex-direction: column;
+}
+
+a, img, button {
+    -webkit-user-drag: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* ==========================================================================
+   4. LAYOUT GLOBAL & BACKGROUNDS 
+   ========================================================================== */
+.layout-wrapper {
+    max-width: 1100px; width: 100%;
+    margin: 0 auto; padding: 0 2rem;
+}
+
+.main-content {
+    flex: 1;
+    display: flex; flex-direction: column; align-items: center;
+    padding-top: 8rem !important;
+    padding-bottom: 10rem !important;
+    padding: 8rem 2rem; 
+    box-sizing: border-box;
+    width: 100%;
+}
+
+#bg-pattern,
+.internal-dot-pattern,
+.bg-pattern,
+.dot-pattern { 
+    pointer-events: none;
+    background-position: center center;
+    background-repeat: repeat;
+}
+
+#bg-pattern { position: fixed; inset: 0; z-index: -1; }
+.internal-dot-pattern { position: absolute; inset: 0; z-index: 0; }
+
+/* 1. Mode RIEN */
+html[data-pattern="none"] #bg-pattern,
+html[data-pattern="none"] .bg-pattern,
+html[data-pattern="none"] .internal-dot-pattern,
+html.hide-pattern .dot-pattern {
+    display: none !important;
+}
+
+/* 2. Mode POINTS (Défaut) */
+html[data-pattern="dots"] #bg-pattern,
+html[data-pattern="dots"] .bg-pattern,
+html[data-pattern="dots"] .internal-dot-pattern,
+.dot-pattern {
+    background-image: radial-gradient(var(--dot-color) 1px, transparent 1px);
+    background-size: 3vh 3vh; 
+    opacity: var(--pattern-opacity, 0.2);
+}
+
+/* 3. Mode QUADRILLAGE */
+html[data-pattern="grid"] #bg-pattern,
+html[data-pattern="grid"] .bg-pattern,
+html[data-pattern="grid"] .internal-dot-pattern {
+    background-image: 
+        linear-gradient(to right, var(--dot-color) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--dot-color) 1px, transparent 1px);
+    background-size: 5vh 5vh;
+    opacity: calc(var(--pattern-opacity, 0.2) * 0.3);
+}
+
+/* 4. Mode Millimétré */
+html[data-pattern="millimeter"] #bg-pattern,
+html[data-pattern="millimeter"] .bg-pattern,
+html[data-pattern="millimeter"] .internal-dot-pattern {
+    background-image: 
+        linear-gradient(to right, var(--dot-color) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--dot-color) 1px, transparent 1px);
+    background-size: 2.5vh 2.5vh;
+    opacity: calc(var(--pattern-opacity, 0.2) * 0.3);
+}
+
+/* 5. Mode CROIX */
+html[data-pattern="cross"] #bg-pattern,
+html[data-pattern="cross"] .bg-pattern,
+html[data-pattern="cross"] .internal-dot-pattern {
+    background-image: 
+        linear-gradient(90deg, transparent calc(50% - 0.5px), var(--dot-color) calc(50% - 0.5px), var(--dot-color) calc(50% + 0.5px), transparent calc(50% + 0.5px)),
+        linear-gradient(0deg, transparent calc(50% - 0.5px), var(--dot-color) calc(50% - 0.5px), var(--dot-color) calc(50% + 0.5px), transparent calc(50% + 0.5px));
+    
+    background-size: 5vh 5vh;
+    background-position: center center;
+    -webkit-mask-image: radial-gradient(circle at center, black 5px, transparent 6px);
+    mask-image: radial-gradient(circle at center, black 5px, transparent 6px);
+    -webkit-mask-size: 5vh 5vh;
+    mask-size: 5vh 5vh;
+    -webkit-mask-position: center center;
+    mask-position: center center;
+    opacity: calc(var(--pattern-opacity, 0.2) * 0.7);
+}
+
+/* ==========================================================================
+   5. HEADER & NAVIGATION
+   ========================================================================== */
+header {
+    width: 100%; padding: 1rem 0;
+    background-color: var(--bg-main);
+    border-bottom: 1px solid var(--border-color);
+    position: fixed; top: 0; z-index: 100;
+    transition: background-color 0.4s ease, border-color 0.4s ease;
+}
+
+.header-inner {
+    display: grid; 
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    min-height: 48px;
+}
+
+/* --- Logo --- */
+.logo-container { 
+    grid-column: 1; justify-self: start; 
+    display: flex; align-items: center; gap: 1rem; 
+}
+.brand-name {
+    font-family: var(--font-heading); font-size: 1.4rem; font-weight: 700;
+    color: var(--text-primary);
+}
+
+/* --- Titre Central --- */
+.header-title {
+    grid-column: 2; justify-self: center;
+    font-family: var(--font-heading); font-weight: 700; font-size: 1.4rem;
+    text-transform: uppercase; letter-spacing: 2px; color: var(--text-primary);
+    white-space: nowrap;
+}
+
+/* --- Menu Droite --- */
+nav { 
+    grid-column: 3; justify-self: end; 
+    display: flex; align-items: center; gap: 1.5rem; 
+}
+
+.nav-divider { width: 1px; height: 16px; background-color: var(--border-color); transition: background-color 0.4s ease;}
+
+.nav-link, .btn-theme, .back-btn {
+    font-family: var(--font-heading); font-weight: 700; font-size: 1.4rem;
+    text-transform: uppercase; letter-spacing: 1px; color: var(--text-primary);
+    text-decoration: none; cursor: pointer; transition: color var(--transition-fast);
+    background: transparent; border: none; display: flex; align-items: center; gap: 8px;
+}
+.nav-link:hover, .btn-theme:hover, .back-btn:hover { color: var(--accent-color); }
+
+/* Épaississement de l'icône login dans le header */
+#nav-login svg {
+    stroke-width: 1.8;
+}
+
+/* --- Responsive Header --- */
+@media (max-width: 700px) {
+    header#home-header .layout-wrapper {
+        padding-left: 0.5rem;
+        padding-right: 1.5rem;
+    }
+    .nav-link span { display: none; }
+    .hide-mobile { display: none; }
+    nav { gap: 0.2rem; grid-column: 3; justify-self: end; }
+    .nav-divider { margin: 0 0.2rem; }
+    
+    .header-inner { grid-template-columns: auto 1fr auto; gap: 0.5rem; }
+    
+    .header-title { 
+        display: block !important; 
+        font-size: 1.1rem; 
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-align: center;
+    }
+
+    .nav-link svg { width: 28px; height: 28px; }
+    .game-page #nav-stats,
+    .game-page #stats-divider,
+    .game-page #nav-login,
+    .game-page #nav-login + .nav-divider {
+        display: none !important;
+    }
+}
+
+/* ==========================================================================
+   6. FOOTER
+   ========================================================================== */
+footer {
+    width: 100%;
+    background-color: var(--bg-main); 
+    border-top: 1px solid var(--border-color);
+    position: relative;
+    padding: 1.5rem 0;
+    margin-top: auto;
+    transition: background-color 0.4s ease, border-color 0.4s ease;
+    z-index: 10; 
+}
+
+.footer-grid {
+    display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; margin-bottom: 1.5rem;
+}
+
+/* Application du style prioritaire pour forcer les espacements des H2 du footer */
+footer .layout-wrapper .footer-grid .footer-col h2 {
+    font-family: var(--font-heading); 
+    font-weight: 700; 
+    font-size: 0.9rem;
+    color: var(--text-primary); 
+    margin-top: 0 !important; 
+    margin-bottom: 1.5rem !important; 
+    padding: 0 !important; 
+    line-height: 1.2;
+    letter-spacing: 1px;
+}
+
+.footer-desc {
+    color: var(--text-secondary); line-height: 1.5; margin-top: 0.8rem;
+    max-width: 300px; font-size: 0.9rem;
+}
+
+.footer-links {
+    list-style: none; display: flex; flex-direction: column; gap: 0.5rem;
+}
+.footer-links a {
+    color: var(--text-secondary); text-decoration: none; font-size: 0.9rem;
+    transition: color var(--transition-fast);
+}
+.footer-links a:hover { color: var(--accent-color); }
+
+.footer-bottom {
+    border-top: 1px solid var(--border-color); padding-top: 1rem;
+    display: flex; justify-content: center;
+    color: var(--text-secondary); font-size: 0.85rem;
+    transition: border-color 0.4s ease;
+}
+
+/* --- Responsive Footer --- */
+@media (max-width: 900px) {
+    .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+    .brand-col { grid-column: span 2; }
+}
+
+@media (max-width: 700px) {
+    .footer-grid { grid-template-columns: 1fr; gap: 1rem; text-align: center; }
+    .brand-col { display: block; grid-column: span 1; }
+    .footer-desc { margin: 0.5rem auto; }
+    
+    footer .logo-container { 
+        justify-content: center; 
+        width: 100%;
+    }
+}
+
+/* ==========================================================================
+   7. COMPOSANT : COLOR PICKER
+   ========================================================================== */
+.custom-picker-wrapper { position: relative; display: flex; align-items: center; }
+
+.btn-spectrum {
+    width: 60px; height: 24px; cursor: pointer;
+    border-radius: var(--radius-md); border: 1px solid var(--border-color);
+    background: linear-gradient(to right, #f00, #ff0, #0f0, #0ff, #00f, #f0f, #f00);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+.btn-spectrum:hover { transform: scale(1.05); box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+
+.color-popover {
+    position: fixed; width: 220px; top: 90px; right: 20px;
+    background: var(--card-bg); border: 1px solid var(--border-color);
+    border-radius: var(--radius-md); box-shadow: 0 10px 40px -5px rgba(0, 0, 0, 0.3);
+    z-index: 2000; transform-origin: top right;
+    transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+}
+.color-popover.hidden { opacity: 0; visibility: hidden; pointer-events: none; transform: scale(0.95); }
+
+.window-header {
+    background: var(--bg-main); border-bottom: 1px solid var(--border-color);
+    padding: 8px 12px; display: flex; justify-content: space-between; align-items: center;
+    border-radius: 4px 4px 0 0; cursor: default;
+}
+.window-title { font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; }
+.btn-close { background: none; border: none; font-size: 1.2rem; color: var(--text-secondary); cursor: pointer; }
+.window-content { padding: 12px; display: flex; flex-direction: column; gap: 12px; }
+
+/* Zones du picker */
+.sl-box {
+    width: 100%; height: 150px; position: relative;
+    border-radius: 4px; overflow: hidden; cursor: crosshair;
+    background-color: red; 
+    mask-image: radial-gradient(white, black);
+}
+.sl-white-overlay { position: absolute; inset: 0; background: linear-gradient(to right, #fff, transparent); pointer-events: none; }
+.sl-black-overlay { position: absolute; inset: 0; background: linear-gradient(to top, #000, transparent); pointer-events: none; }
+
+.picker-cursor {
+    width: 12px; height: 12px; border-radius: 4px;
+    border: 2px solid white; box-shadow: 0 0 2px rgba(0,0,0,0.5);
+    position: absolute; transform: translate(-50%, -50%); pointer-events: none;
+}
+
+/* Sliders & Inputs */
+.controls-row { display: flex; align-items: center; gap: 10px; }
+.preview-box-small { width: 28px; height: 28px; border-radius: var(--radius-md); background-color: var(--accent-color); border: 1px solid var(--border-color); transition: border-color 0.4s ease;}
+
+.slider-hue {
+    -webkit-appearance: none; width: 100%; height: 12px; border-radius: 4px; outline: none;
+    appearance: none; background: linear-gradient(to right, #f00, #ff0, #0f0, #0ff, #00f, #f0f, #f00);
+}
+.slider-hue::-webkit-slider-thumb { 
+    -webkit-appearance: none; height: 16px; width: 16px; border-radius: 4px;
+    background: #fff; border: 2px solid var(--text-secondary); box-shadow: 0 1px 3px rgba(0,0,0,0.3); 
+}
+
+.hex-input-wrapper {
+    display: flex; align-items: center; gap: 8px; padding: 6px 10px;
+    background: var(--bg-main); border: 1px solid var(--border-color);
+    border-radius: var(--radius-md); font-family: var(--font-body), monospace;
+}
+.hex-input-wrapper:focus-within { border-color: var(--accent-color); }
+.hex-input { 
+    background: transparent; border: none; outline: none; width: 100%; 
+    color: var(--text-primary); text-transform: uppercase; 
+    font-family: inherit; font-size: 14px; 
+}
+
+/* ==========================================================================
+   8. PAGE D'ACCUEIL (SEARCH & GRID)
+   ========================================================================== */
+
+.search-intro { 
+    margin-bottom: 3.5rem; 
+    width: 100%; 
+    display: flex; 
+    justify-content: center; 
+}
+
+.filter-search-container {
+    width: 100%;
+    display: flex;
+    justify-content: center; 
+    gap: 1rem;
+}
+
+/* --- BARRE DE RECHERCHE --- */
+.search-wrapper { 
+    position: relative; 
+    width: 100%; 
+    max-width: 600px; 
+    margin: 0 auto; 
+    
+    background-color: var(--bg-main);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-card);
+    
+    display: flex;
+    align-items: center;     
+    padding: 0 20px; 
+    
+    transition: transform var(--transition-fast), border-color 0.4s ease, box-shadow 0.4s ease;
+    cursor: text; 
+}
+
+html.global-opaque .search-wrapper { background-color: var(--card-bg); }
+
+.search-icon { 
+    position: absolute; left: 20px; color: var(--text-secondary); 
+    pointer-events: none; flex-shrink: 0;
+}
+
+#game-search {
+    width: 100%; height: 100%; min-height: 54px; padding: 0 40px; 
+    background: transparent !important; border: none !important;
+    box-shadow: none !important; outline: none !important;
+    font-family: var(--font-heading); font-size: 1.2rem; font-weight: 500;
+    color: var(--text-primary); text-align: center; 
+}
+
+.search-wrapper:hover { 
+    transform: translateY(-4px); box-shadow: var(--shadow-hover); border-color: var(--accent-color);
+}
+.search-wrapper:focus-within { border-color: var(--accent-color); box-shadow: var(--shadow-hover); }
+
+/* --- Grille des Jeux --- */
+.games-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; width: 100%; }
+
+/* --- STYLE DES CARTES (Séparées en deux) --- */
+.game-card {
+    background-color: var(--bg-main);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md); 
+    height: 240px; 
+    position: relative; overflow: hidden;
+    transition: transform var(--transition-smooth), border-color var(--transition-smooth), box-shadow var(--transition-smooth), background-color 0.4s ease;
+    order : 0;
+}
+html.global-opaque .game-card { background: var(--card-bg); }
+
+.game-card.hidden { display: none; }
+.game-card.disabled { opacity: 0.5; pointer-events: none; filter: grayscale(1); order : 2; }
+
+/* Contenu textuel et icône principale au centre (Ignorera la souris) */
+.card-content { 
+    position: absolute; inset: 0; padding: 2rem 1.5rem 1rem 1.5rem;
+    display: flex; flex-direction: column; 
+    pointer-events: none; /* TRÈS IMPORTANT: laisse passer le clic aux liens derrière */
+    z-index: 10;
+}
+
+.card-content h2 { 
+    font-family: var(--font-heading); font-size: 1.25rem; margin-bottom: 0.8rem; 
+    color: var(--text-primary); transition: color var(--transition-fast); 
+}
+.card-content p { font-size: 1rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem; }
+
+.card-icon {
+    margin-top: auto; margin-bottom: 1rem; color: var(--accent-color); 
+    display: flex; justify-content: center; align-items: center;
+}
+.card-icon svg { width: auto; height: 56px; display: block; transition: color var(--transition-smooth); }
+
+/* Icône Mémoire chromatique : léger surcroît par rapport au gabarit 56px */
+.card-icon svg.card-icon-chromatic {
+    width: 60px;
+    height: 60px;
+}
+
+/* --- Les Liens Clickables (Gauche / Droite) --- */
+.split-link {
+    position: absolute; top: 0; bottom: 0; width: 50%;
+    z-index: 5; text-decoration: none;
+}
+.left-link { left: 0; }
+.right-link { right: 0; }
+
+/* --- Voiles d'assombrissement (Hover Latéral) --- */
+.hover-overlay {
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 50%;
+    background-color: rgba(0, 0, 0, 0.15); /* Couleur sombre semi-transparente */
+    opacity: 0; /* Invisible par défaut */
+    z-index: 1; /* Derrière le texte (z-10) mais devant le fond */
+    transition: opacity 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    pointer-events: none;
+}
+
+/* Adaptation pour que ça reste visible en thème clair comme sombre */
+html.dark-dominant .hover-overlay { background-color: rgba(0, 0, 0, 0.3); }
+html:not(.dark-dominant) .hover-overlay { background-color: rgba(0, 0, 0, 0.05); }
+
+/* Positionnement des voiles */
+.overlay-left { left: 0; border-right: 1px solid transparent; }
+.overlay-right { right: 0; border-left: 1px solid transparent; }
+
+/* --- Icônes Classé / Libre (Bas) --- */
+.card-modes {
+    position: absolute; bottom: 1.5rem; left: 0; width: 100%;
+    display: flex; justify-content: space-between; padding: 0 2rem;
+    z-index: 15; pointer-events: none; 
+}
+
+.mode-icon-ranked, .mode-icon-sandbox {
+    width: 24px; height: 24px;
+    color: var(--text-secondary); opacity: 0.3; 
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* --- INTERACTIONS HOVER --- */
+/* Hover général de la carte */
+.game-card:hover:not(.disabled) {
+    transform: translateY(-4px); border-color: var(--accent-color);
+    box-shadow: var(--shadow-hover);
+}
+
+/* Interaction Partie Gauche (Classé) : Affiche le voile gauche + anime l'icône */
+.left-link:hover ~ .overlay-left { opacity: 1; border-color: var(--border-color); }
+.left-link:hover ~ .card-modes .mode-icon-ranked {
+    opacity: 1; color: var(--accent-color); transform: scale(1.2);
+}
+
+/* Interaction Partie Droite (Libre) : Affiche le voile droit + anime l'icône */
+.right-link:hover ~ .overlay-right { opacity: 1; border-color: var(--border-color); }
+.right-link:hover ~ .card-modes .mode-icon-sandbox {
+    opacity: 1; color: var(--accent-color-secondary); transform: scale(1.2);
+}
+
+/* --- Badge "Nouveau" --- */
+.new-badge {
+    position: absolute; top: 5px; right: 5px; background-color: var(--accent-color-secondary);
+    color: #ffffff; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 1px; padding: 5px 10px; border-radius: 4px;
+    z-index: 20; pointer-events: none;
+    
+    /* --- LE NOUVEAU HALO HOMOGÈNE --- */
+    text-shadow: 
+        0 0 8px rgba(0, 0, 0, 0.6),  /* Couche intermédiaire : adoucit les bords */
+        0 0 16px rgba(0, 0, 0, 0.6);  /* Couche externe : crée le halo large et diffus */
+    /* -------------------------------- */
+    
+    box-shadow: 0 2px 5px color-mix(in srgb, var(--accent-color-secondary), transparent 75%);
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s ease;
+}
+
+/* --- Responsive Accueil & Grid --- */
+@media (max-width: 900px) { 
+    .games-grid { grid-template-columns: repeat(2, 1fr); } 
+}
+@media (max-width: 768px) { 
+    .filter-search-container { flex-direction: column; gap: 0.8rem; } 
+}
+@media (max-width: 700px) { 
+    .games-grid { grid-template-columns: 1fr; } 
+}
+
+
+/* ==========================================================================
+   9. UI JEUX PARTAGÉE (Game Board, HUD, Overlays, Settings)
+   ========================================================================== */
+
+/* --- A. PLATEAU DE JEU (Game Board) --- */
+.game-board {
+    margin: auto; width: 100%; height: 80vh; 
+    min-height: 550px; max-height: 850px;
+    background: transparent; border: 1px solid transparent; box-shadow: none;
+    border-radius: var(--radius-md);
+    position: relative; overflow: hidden; 
+    transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+
+.game-board:fullscreen {
+    width: 100vw; height: 100vh;
+    max-width: none; max-height: none;
+    border-radius: 0; border: none;
+    display: flex; justify-content: center; align-items: center;
+    background-color: var(--bg-main);
+}
+
+/* Le pattern interne est caché par défaut */
+.internal-dot-pattern {
+    display: none;
+}
+
+/* En plein écran, on l'affiche (le style est géré par la section 4) */
+.game-board:fullscreen .internal-dot-pattern { 
+    display: block; 
+}
+
+/* Mode Opaque pour le plateau */
+.game-board.opaque-mode, html.global-opaque .game-board { 
+    background: var(--card-bg); 
+    border-color: var(--border-color); 
+    box-shadow: var(--shadow-card); 
+}
+
+/* Croix quitter plein écran (Toujours au dessus de tout) */
+.exit-fs-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    display: none; 
+    padding: 8px;
+    /* CORRECTION : On passe devant les overlays et les settings */
+    z-index: 2100 !important; 
+    pointer-events: auto !important;
+    transition: color var(--transition-fast);
+}
+.exit-fs-btn svg { width: 32px; height: 32px; }
+.exit-fs-btn:hover { color: var(--accent-color-secondary); }
+
+/* On l'affiche uniquement si le plateau est en plein écran */
+.game-board:fullscreen .exit-fs-btn {
+    display: block;
+}
+
+/* --- B. HEADER DU JEU (Barre du haut) --- */
+.game-header {
+    width: 100%; display: grid; grid-template-columns: 1fr auto 1fr;
+    align-items: center; border-bottom: none; height: 72px; padding-bottom: 0; gap: 10px;
+    position: relative; z-index: 30;
+}
+
+.score-box { 
+    justify-self: start; height: 100%; display: flex; align-items: center; justify-content: center;
+    border: 2px solid var(--border-color); border-radius: var(--radius-md); background-color: var(--bg-main);
+    padding: 0 25px; min-width: 72px; 
+    font-family: var(--font-heading); font-size: 2rem; font-weight: 500; color: var(--text-primary);
+}
+/* Version Opaque des éléments UI */
+html.global-opaque .score-box, html.global-opaque .icon-btn , html.global-opaque .btn-reset{
+    background-color: var(--card-bg);
+}
+
+.settings-btn { justify-self: end; }
+.header-spacer { width: 10px; flex-grow: 1; }
+
+/* --- C. BARRE D'ACTIONS (Barre du bas) --- */
+.game-actions-row { 
+    width: 100%; display: flex; align-items: center; gap: 24px; height: 72px; 
+    position: relative; z-index: 30;
+}
+
+.icon-btn {
+    background-color: var(--bg-main); border: 2px solid var(--border-color); cursor: pointer;
+    color: var(--text-secondary); border-radius: var(--radius-md); 
+    display: flex; align-items: center; justify-content: center;
+    width: 72px; height: 72px; flex-shrink: 0; transition: all 0.2s;
+}
+.icon-btn:hover { background: var(--bg-main); color: var(--accent-color); border-color: var(--accent-color); transform: translateY(-2px); }
+.icon-btn svg { width: 40px; height: 40px; display: block; }
+.icon-btn .hidden { display: none; }
+
+/* --- D. OVERLAYS (Accueil & Game Over) --- */
+.overlay {
+    position: absolute; inset: 0; background: transparent; 
+    z-index: 50; display: flex; flex-direction: column; 
+    align-items: center; justify-content: center; padding: 2rem; 
+    opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+}
+.overlay.visible { opacity: 1; pointer-events: all; }
+
+.overlay-content { 
+    text-align: center; width: 100%; height: 100%; 
+    display: flex; flex-direction: column; align-items: center; justify-content: space-between; 
+    padding: 2rem 0; 
+}
+#game-over-overlay .overlay-content { justify-content: center; gap: 3rem; }
+
+/* Typographie Overlay */
+.intro-title { 
+    font-family: var(--font-heading); font-size: 3rem; font-weight: 500; 
+    color: var(--text-primary); margin: 0 0 1rem 0; line-height: 1.1; 
+    text-transform: uppercase; letter-spacing: -1px; 
+}
+.intro-desc { 
+    font-family: var(--font-body); font-size: 1.1rem; 
+    color: var(--text-secondary); line-height: 1.6; 
+}
+
+/* --- E. ÉCRANS DE STATUS (Prêt, Pause, etc.) --- */
+.status-overlay {
+    position: absolute; inset: 0; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; text-align: center;
+    z-index: 100; cursor: pointer; transition: opacity 0.3s ease;
+}
+.status-overlay.hidden { display: none !important; opacity: 0; }
+
+.status-main-text {
+    font-family: var(--font-heading); font-size: 4rem; font-weight: 500;
+    color: var(--text-primary); letter-spacing: -2px; line-height: 1.1;
+    text-transform: uppercase;
+}
+
+.status-sub-text {
+    display: flex; align-items: center; justify-content: center; gap: 12px;
+    margin-top: 1.5rem; font-family: var(--font-body); font-size: 1.1rem;
+    color: var(--text-secondary); font-weight: 500; text-transform: uppercase; letter-spacing: 1px;
+}
+
+.status-sub-text svg { width: 24px; height: 24px; color: var(--text-primary); }
+
+/* Scores Overlay */
+.home-score-container { display: flex; flex-direction: column; align-items: center; }
+.score-label { 
+    font-family: var(--font-heading); font-weight: 500; letter-spacing: 2px; 
+    color: var(--text-primary); text-transform: uppercase; margin-bottom: 0.5rem; font-size: 2rem; 
+}
+#best-score-display { 
+    font-family: var(--font-heading); font-size: 8rem; font-weight: 600; 
+    color: var(--accent-color); line-height: 1; 
+}
+
+/* --- E. RÉSULTATS (Game Over Grid) --- */
+.results-grid {
+    display: flex; flex-direction: column; align-items: center; gap: 2rem; margin-bottom: 2rem;
+}
+.result-item { display: flex; flex-direction: column; align-items: center; }
+
+/* Labels et Valeurs */
+.res-label {
+    font-family: var(--font-heading); color: var(--text-secondary);
+    font-size: 2.5rem; text-transform: uppercase; font-weight: 600;
+    margin-bottom: 0.5rem; letter-spacing: 2px;
+}
+.res-value.big {
+    color: var(--accent-color); font-family: var(--font-heading);
+    font-weight: 600; font-size: 8rem; line-height: 1;
+}
+
+/* Petit résultat secondaire */
+.small-result { opacity: 0.9; margin-top: 0.5rem; gap: 5px; }
+.small-result .res-label { font-size: 1rem; margin-bottom: 0; }
+.small-result .res-value {
+    font-family: var(--font-heading); font-size: 2.5rem;
+    font-weight: 600; color: var(--text-primary); line-height: 1;
+}
+
+/* Nouveau Record */
+.new-record {
+    display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 1rem;
+    color: #eab308; font-family: var(--font-heading); font-weight: 600;
+    text-transform: uppercase; letter-spacing: 2px; font-size: 1.2rem; animation: bounce 1s infinite;
+}
+.new-record.hidden { display: none !important; }
+@keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+
+/* --- F. BOUTONS (Communs) --- */
+.intro-btn-group { display: flex; flex-direction: column; align-items: center; width: 100%; gap: 1rem; }
+
+.primary-btn { 
+    background: var(--accent-color); color: #fff; border: none; padding: 1.5rem 5rem;
+    font-size: 1.6rem; font-family: var(--font-heading); font-weight: 500;
+    text-transform: uppercase; cursor: pointer; border-radius: var(--radius-md);
+    box-shadow: 0 4px 15px var(--accent-glow); transition: transform 0.2s, box-shadow 0.2s, filter 0.2s; 
+}
+.primary-btn:hover { transform: translateY(-4px); box-shadow: 0 10px 30px var(--accent-glow); filter: brightness(1.1); }
+.big-btn { padding: 1.5rem 5rem; font-size: 1.6rem; letter-spacing: 2px; }
+
+.secondary-btn {
+    background: transparent; color: var(--text-primary); border: 1px solid var(--border-color);
+    padding: 12px 32px; border-radius: var(--radius-md); font-family: var(--font-heading); 
+    font-weight: 500; cursor: pointer; transition: all 0.2s; text-transform: uppercase;
+}
+.secondary-btn:hover { border-color: var(--accent-color); color: var(--accent-color); background: var(--bg-main); }
+
+.btn-reset {
+    display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 15px; 
+    background-color: var(--bg-main);
+    border: 2px solid var(--accent-color-secondary); 
+    color: var(--accent-color-secondary); 
+    font-family: var(--font-heading); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; 
+    padding: 10px 24px; border-radius: var(--radius-md); cursor: pointer; transition: all 0.2s ease;
+}
+
+.btn-reset:hover { 
+    transform: translateY(-2px); 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); 
+}
+
+.btn-reset svg { 
+    fill: currentColor; stroke: currentColor; stroke-width: 0.5px; width: 20px; height: 20px; transition: transform 0.5s ease; 
+}
+
+.btn-reset:hover svg { 
+    transform: rotate(360deg); 
+}
+
+/* --- G. PANNEAU DE CONFIGURATION (Settings) --- */
+#settings-panel {
+    font-family: var(--font-body); position: fixed; top: 0; right: 0; width: 340px; height: 100%;
+    background-color: var(--bg-main); border-left: 1px solid var(--border-color);
+    padding: 0 2rem 2rem 2rem; box-shadow: -10px 0 30px rgba(0,0,0,0.15); 
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s;
+    z-index: 1000; display: flex; flex-direction: column; gap: 0.5rem; overflow-y: auto;
+}
+#settings-panel.opaque-mode { background: var(--card-bg); backdrop-filter: none; }
+.panel-hidden { transform: translateX(100%); }
+
+#settings-panel h3 { 
+    text-align: center; padding: 1.5rem 0; line-height: 32px;
+    margin: 0 -2rem 2rem -2rem; border-bottom: 1px solid var(--border-color);
+    font-family: var(--font-heading); font-size: 1.4rem; font-weight: 600; 
+    text-transform: uppercase; letter-spacing: 2px;
+}
+
+.setting-group { display: flex; flex-direction: column; gap: 5px; }
+.setting-row { display: flex; justify-content: space-between; align-items: center; }
+.setting-group label { color: var(--text-primary); font-family: var(--font-heading); font-weight: 500; margin-bottom: 0.5rem; display: block;}
+.hint-text { font-size: 0.85rem; color: var(--text-secondary); margin-top: 6px; font-style: italic; }
+
+.settings-actions { margin-top: auto; display: flex; justify-content: space-between; gap: 15px; padding-top: 1rem; }
+.settings-actions button { flex: 1; padding: 12px 10px; font-size: 0.9rem; white-space: nowrap; }
+
+/* Titres de sections dans les paramètres */
+.setting-title { 
+    font-size: 1rem; text-transform: uppercase; 
+    color: var(--text-secondary); 
+    margin-bottom: 0.5rem; margin-top: 0;
+    font-weight: 700; letter-spacing: 1px; 
+}
+
+/* Ligne de séparation */
+.separator { 
+    border: 0; border-top: 1px solid var(--border-color); 
+    margin: 1rem 0 1.5rem 0; width: 100%; opacity: 0.6; 
+}
+
+/* Input générique pour les settings */
+#settings-panel input[type="number"] {
+    background: var(--bg-main); border: 1px solid var(--border-color); color: var(--text-primary);
+    padding: 10px; border-radius: var(--radius-md); font-family: var(--font-body); font-size: 1rem; outline: none;
+    text-align: center; width: 80px; appearance: textfield; -moz-appearance: textfield; 
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+#settings-panel input[type="number"]:focus { border-color: var(--accent-color); box-shadow: 0 0 0 3px var(--accent-glow); }
+
+/* Switch / Checkbox personnalisé */
+.op-check {
+    display: flex; align-items: center; flex-direction: row; gap: 12px; cursor: pointer; min-height: 24px;
+}
+.op-check label { transform: translateY(2px); line-height: 1.2; cursor: pointer; margin: 0; padding: 0; }
+.op-check input {
+    -webkit-appearance: none; appearance: none; width: 20px; height: 20px;
+    border: 2px solid var(--text-secondary); border-radius: 4px; background-color: transparent;
+    flex-shrink: 0; margin: 0; display: grid; place-content: center; position: relative;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.op-check input::before {
+    content: ""; width: 12px; height: 12px; background-color: #fff; transform: scale(0);
+    transition: 0.2s transform cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+.op-check input:checked { background-color: var(--accent-color); border-color: var(--accent-color); }
+.op-check input:checked::before { transform: scale(1); }
+.op-check input:focus { box-shadow: 0 0 0 3px var(--accent-glow) !important; border-color: var(--accent-color); }
+
+/* ==========================================================================
+   10. COMPOSANT GLOBAL : VIRTUAL NUMPAD
+   ========================================================================== */
+/* CACHÉ PAR DÉFAUT (Ordinateur) */
+#keyboard-container {
+    display: none !important;
+}
+
+.virtual-numpad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    width: 100%;
+    max-width: 600px; 
+    margin: 1.5rem auto 0 auto;
+    padding: 0 15px;
+}
+
+.vk-btn {
+    background-color: var(--card-bg);
+    border: 2px solid var(--border-color);
+    color: var(--text-primary);
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 500;
+    border-radius: var(--radius-md);
+    height: 65px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    touch-action: manipulation;
+    transition: transform 0.05s ease, background-color 0.1s ease;
+    box-shadow: 0 4px 0 var(--border-color);
+    width: 100%;
+}
+
+.vk-btn:active {
+    transform: translateY(4px);
+    box-shadow: 0 0 0 var(--border-color);
+    background-color: var(--bg-main);
+}
+
+.vk-action { background-color: var(--bg-main); color: var(--text-secondary); }
+.vk-submit { color: var(--accent-color); }
+.vk-clear { color: var(--accent-color-secondary) !important; font-weight: 700; }
+
+@media (max-width: 1024px) {
+    #keyboard-container {
+        display: flex !important;
+        width: 100% !important;
+        justify-content: center !important;
+    }
+}
+
+/* --- H. RESPONSIVE COMMUN (JEUX) --- */
+@media (max-width: 700px) {
+
+    /* Reste de tes règles mobiles existantes... */
+    .game-board { height: 80vh; min-height: 500px; }
+    /* UI des jeux en mode mobile */
+    .game-board { height: 80vh; min-height: 500px; }
+    #best-score-display, .res-value.big { font-size: 5rem; }
+    .intro-title { font-size: 2rem; }
+    .primary-btn { padding: 1.2rem 3rem; font-size: 1.3rem; }
+    #settings-panel { width: 100%; }
+    .score-box { font-size: 1.2rem; min-width: 60px; padding: 0 15px; }
+    .game-actions-row { gap: 12px; }
+    .icon-btn svg { width: 40px; height: 40px; }
+    .small-result .res-value, .res-label { font-size: 2rem; }
+    .exit-fs-btn { top: 10px; right: 10px; }
+    .exit-fs-btn svg { width: 28px; height: 28px; }
+
+    /* =========================================
+       MODE "APP NATIVE" JEUX MOBILE (Option 3)
+       ========================================= */
+       
+    .game-page .main-content {
+        padding: 80px 0 0 0 !important; 
+        height: 100vh; /* Sécurité pour les vieux navigateurs */
+        height: 100dvh; /* S'adapte à la barre d'URL mobile */
+        min-height: 100dvh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .game-page .game-board {
+        flex: 1 1 auto;
+        height: 100%;
+        min-height: 0; /* MAGIE 1 : Autorise le rétrécissement au lieu de déborder */
+        max-height: none;
+        width: 100%;
+        border-radius: 0;
+        border: none;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Le conteneur interne du jeu (memory-container, sudoku-container, etc.) */
+    .game-page .game-board > div:not(.overlay) {
+        flex: 1 1 auto;
+        min-height: 0; /* MAGIE 2 */
+        padding: 1rem !important; /* Marge réduite sur mobile pour respirer */
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Wrapper de la grille */
+    .game-page .grid-wrapper {
+        flex: 1 1 auto;
+        min-height: 0; /* MAGIE 3 */
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Adaptation parfaite de la grille (carrée) pour ne jamais dépasser */
+    .game-page .grid-container,
+    .game-page .sudoku-grid {
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+        max-height: 100%; 
+        aspect-ratio: 1 / 1;
+    }
+
+    /* Redimensionnement de l'UI pour garantir un max de place pour la grille */
+    .game-page .game-header,
+    .game-page .game-actions-row {
+        height: 60px !important;
+        flex-shrink: 0; /* Empêche l'écrasement des menus par la grille */
+    }
+    
+    .game-page .icon-btn {
+        width: 60px !important;
+        height: 60px !important;
+    }
+    
+    .game-page .icon-btn svg {
+        width: 32px !important;
+        height: 32px !important;
+    }
+    
+    /* =========================================
+       NEUTRALISATION DU GROSSISSEMENT PLEIN ÉCRAN (MOBILE)
+       ========================================= */
+       
+    /* Empêche la grille de forcer des dimensions géantes */
+    .game-page .game-board:fullscreen .grid-container,
+    .game-page .game-board:fullscreen .sudoku-grid {
+        width: 100% !important;
+        height: auto !important;
+        max-width: 100% !important;
+        max-height: 100% !important;
+    }
+
+    /* Rétablit la taille du texte des overlays (Pause, Game Over) */
+    .game-page .game-board:fullscreen .status-main-text {
+        font-size: 4rem !important; 
+    }
+
+    .game-page .game-board:fullscreen .status-sub-text {
+        font-size: 0.9rem !important;
+        margin-top: 1.5rem !important;
+    }
+
+    .game-page .game-board:fullscreen .status-sub-text svg {
+        width: 24px !important;
+        height: 24px !important;
+    }
+    .lives-display .lives-count {
+        font-size: 2.5rem !important; /* Ajuste cette valeur selon la taille désirée (ex: 2.5rem au lieu de 3.5rem) */
+    }
+    body.is-visitor nav {
+        gap: 0.8rem; /* Ajustez cette valeur selon votre besoin (0.2rem par défaut) */
+    }
+}

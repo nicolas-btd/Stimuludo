@@ -1,0 +1,16 @@
+User-agent: *
+Allow: /
+
+# Fichiers et dossiers internes à ignorer
+Disallow: /api/
+Disallow: /footer/
+Disallow: /todo.txt
+
+# Pages privées ou liées aux comptes utilisateurs
+Disallow: /login/
+Disallow: /profile/
+Disallow: /reset/
+Disallow: /settings/
+
+# Emplacement du sitemap pour les moteurs de recherche
+Sitemap: https://stimuludo.com/sitemap.xml

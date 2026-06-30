@@ -1,0 +1,16 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/beni8920/stimuludo-node
+    
+    # 1. On utilise rsync (synchronisation intelligente) pour copier en ignorant node_modules
+    - /usr/bin/rsync -av --exclude 'node_modules' --exclude '.git' ./ $DEPLOYPATH/
+    
+    # 2. On installe les outils de minification (avec log)
+    - cd $DEPLOYPATH && /home/beni8920/nodevenv/stimuludo-node/20/bin/npm install > deploy_npm.log 2>&1
+    
+    # 3. On minifie les fichiers en place (avec log)
+    - cd $DEPLOYPATH && /home/beni8920/nodevenv/stimuludo-node/20/bin/node build.js > deploy_build.log 2>&1
+    
+    # 4. On redémarre l'application
+    - cd $DEPLOYPATH && mkdir -p tmp && touch tmp/restart.txt

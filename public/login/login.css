@@ -1,0 +1,240 @@
+
+
+
+.auth-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 2rem 1rem;
+}
+
+
+.auth-card {
+    background-color: var(--bg-main);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 3rem;
+    width: 100%;
+    max-width: 480px;
+    box-shadow: var(--shadow-card);
+    transition: background-color 0.4s ease, border-color 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+
+html.global-opaque .auth-card {
+    background-color: var(--card-bg);
+}
+
+
+
+
+.auth-header {
+    text-align: center;
+    margin-bottom: 2.2rem;
+}
+
+.auth-header h1 {
+    font-family: var(--font-heading);
+    color: var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+    font-size: 2.2rem;
+}
+
+.auth-header p {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+}
+
+
+
+
+
+.error-box,
+.success-box {
+    padding: 12px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1.8rem;
+    font-size: 0.95rem;
+}
+
+.error-box {
+    background-color: color-mix(in srgb, #ff4545, transparent 90%);
+    border: 1px solid #ff4545;
+    color: #ff4545;
+    animation: shake 0.4s ease-in-out;
+}
+
+.success-box {
+    background: rgba(76, 175, 80, 0.1);
+    color: #4CAF50;
+    border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.error-box.hidden,
+.success-box.hidden { 
+    display: none; 
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+
+#username-feedback {
+    display: block;
+    font-size: 0.8rem;
+    margin-top: 5px;
+    min-height: 16px; 
+    transition: color 0.2s;
+}
+
+
+
+
+.input-group {
+    margin-bottom: 1.4rem;
+    opacity: 1;
+    transition: all 0.3s ease;
+}
+
+.input-group.hidden {
+    display: none;
+    opacity: 0;
+}
+
+.input-group label {
+    display: block;
+    font-family: var(--font-heading);
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 0.6rem;
+    font-weight: 500;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-wrapper svg {
+    position: absolute;
+    left: 14px;
+    color: var(--text-secondary);
+    transition: color 0.3s ease;
+}
+
+.input-wrapper input {
+    width: 100%;
+    padding: 14px 14px 14px 44px;
+    background-color: var(--bg-main);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    transition: all 0.3s ease;
+}
+
+
+.input-wrapper input:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.input-wrapper input:focus + svg,
+.input-wrapper input:focus ~ svg {
+    color: var(--accent-color);
+}
+
+html.global-opaque .input-wrapper input {
+    background-color: var(--bg-main);
+}
+
+
+
+
+
+.full-width {
+    width: 100%;
+    margin-top: 1.2rem;
+    font-size: 1.15rem;
+    padding: 1.1rem;
+}
+
+
+.forgot-link-wrapper {
+    text-align: right;
+    margin-top: 6px;
+}
+
+.forgot-link {
+    font-size: 0.85rem;
+    color: var(--text-secondary, #aaa);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    font-family: inherit;
+    transition: color 0.2s;
+}
+
+.forgot-link:hover {
+    color: var(--accent-color, #4CAF50);
+    text-decoration: underline;
+}
+
+
+.auth-footer {
+    margin-top: 1.8rem;
+    text-align: center;
+    font-size: 1rem;
+    color: var(--text-secondary);
+}
+
+
+.text-link {
+    background: none;
+    border: none;
+    color: var(--accent-color);
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    padding: 0;
+    margin-left: 5px;
+    transition: color 0.2s;
+}
+
+.text-link:hover {
+    color: var(--text-primary);
+}
+
+
+
+
+@media (max-width: 600px) {
+    .auth-card {
+        padding: 1.5rem;
+        box-shadow: none;
+        background: transparent;
+        border: none;
+    }
+    
+    .main-content { 
+        padding-top: 6rem; 
+    }
+}

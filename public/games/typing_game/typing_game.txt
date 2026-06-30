@@ -1,0 +1,4 @@
+nb : 
+- améliorer le mode aléatoire (ex : y'a trop de nombre avec les nombres activés)
+- rendre le mode aléatoire infini
+- augmenter la base de données du mode littérature
