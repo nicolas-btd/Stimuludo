@@ -2,6 +2,8 @@
 
 ### [stimuludo.com](https://stimuludo.com) is a website designed to stimulate and train cognitive abilities in a fun and engaging way.
 
+![Stimuludo Screen](public/favicon/stimuludo-screen.png)
+
 ---
 
 ## Technical Stack
@@ -20,4 +22,4 @@
 
 ---
 
-> **Note:** The commit history is hosted in a private repository for confidentiality reasons. This public repository serves as a showcase.
+> **Note:** The commit history is hosted in a private repository for security reasons. This public repository serves as a showcase.
